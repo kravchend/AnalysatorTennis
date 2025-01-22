@@ -1,4 +1,10 @@
+
+**
+
 *
 
+!screenshot/
+!screenshot/*
+!README.md
 !tennisGUI.py
 !gameModul.py
