@@ -7,7 +7,6 @@ import os
 
 
 def resource_path(relative_path):
-    """ Получить абсолютный путь к ресурсам в формате совместимом с PyInstaller """
     base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
     return os.path.join(base_path, relative_path)
 
@@ -36,7 +35,7 @@ class Ui_tennis(object):
         self.label.setGeometry(QtCore.QRect(230, 12, 661, 40))
         self.label.setObjectName("label")
         font = QtGui.QFont()
-        font.setFamily("Academy Engraved LET")  # Укажите шрифт
+        font.setFamily("Academy Engraved LET") 
         font.setPointSize(23)
         self.label.setFont(font)
         self.label.setStyleSheet("background-color: rgba(255, 255, 255, 0);")
@@ -171,7 +170,7 @@ class Ui_tennis(object):
         self.pushBut_Game.setGeometry(QtCore.QRect(205, 595, 115, 50))
         self.pushBut_Game.setIcon(
             QIcon(resource_path("/Users/dmitriykravchenko/Documents/Programirovanie/Tennis/images/game.png")))
-        self.pushBut_Game.setIconSize(QtCore.QSize(440, 105))  # Устанавливаем размер иконки меньше размера кнопки
+        self.pushBut_Game.setIconSize(QtCore.QSize(440, 105)) 
         self.pushBut_Game.setObjectName("pushBut_Game")
         self.pushBut_Game.setStyleSheet("border-radius: 25px; border: 0px solid red;")
         self.add_shadow_effect(self.pushBut_Game, x_offset=6, y_offset=6, blur_radius=25)
@@ -254,7 +253,7 @@ class Ui_tennis(object):
         self.pushBut_Reset.setGeometry(QtCore.QRect(397, 595, 115, 50))
         self.pushBut_Reset.setIcon(
             QIcon(resource_path("/Users/dmitriykravchenko/Documents/Programirovanie/Tennis/images/reset.png")))
-        self.pushBut_Reset.setIconSize(QtCore.QSize(445, 105))  # Устанавливаем размер иконки меньше размера кнопки
+        self.pushBut_Reset.setIconSize(QtCore.QSize(445, 105)) 
         self.pushBut_Reset.setObjectName("pushBut_Reset")
         self.pushBut_Reset.setStyleSheet("border-radius: 25px; border: 0px solid red;")
         self.add_shadow_effect(self.pushBut_Reset, x_offset=6, y_offset=6, blur_radius=20)
@@ -263,7 +262,7 @@ class Ui_tennis(object):
         self.pushBut_Close.setGeometry(QtCore.QRect(578, 595, 115, 50))
         self.pushBut_Close.setIcon(
             QIcon(resource_path("/Users/dmitriykravchenko/Documents/Programirovanie/Tennis/images/close.png")))
-        self.pushBut_Close.setIconSize(QtCore.QSize(440, 105))  # Устанавливаем размер иконки меньше размера кнопки
+        self.pushBut_Close.setIconSize(QtCore.QSize(440, 105)) 
         self.pushBut_Close.setObjectName("pushBut_Close")
         self.pushBut_Close.setStyleSheet("border-radius: 25px; border: 0px solid red;")
         self.add_shadow_effect(self.pushBut_Close, x_offset=6, y_offset=6, blur_radius=25)
@@ -739,8 +738,8 @@ class Ui_tennis(object):
         self.pushBut_Close.pressed.connect(self.close_press)
         self.pushBut_Close.released.connect(self.close_release)
 
-        tennis.mousePressEvent = self.mousePressEvent  # Для захвата нажатия на окно
-        tennis.mouseMoveEvent = self.mouseMoveEvent  # Для перемещения окна
+        tennis.mousePressEvent = self.mousePressEvent 
+        tennis.mouseMoveEvent = self.mouseMoveEvent 
 
     def retranslateUi(self, tennis):
         _translate = QtCore.QCoreApplication.translate
@@ -791,24 +790,20 @@ class Ui_tennis(object):
         def paint_with_borders(event):
             original_paint_event(event)
 
-            # Теперь выполняем наш кастомный рисунок
             painter = QPainter(widget)
 
-            # Верхняя и левая границы (светлые)
             painter.setPen(QColor(120, 150, 150))
-            painter.drawLine(0, 0, widget.width(), 0)  # Верх
+            painter.drawLine(0, 0, widget.width(), 0) 
 
         widget.paintEvent = paint_with_borders
 
     def mousePressEvent(self, event):
-        """Сохраняем позицию курсора при нажатии мыши для перемещения окна."""
         if event.button() == QtCore.Qt.LeftButton:
-            self.offset = event.globalPos() - self.tennis.pos()  # Захватываем положение окна
+            self.offset = event.globalPos() - self.tennis.pos() 
 
     def mouseMoveEvent(self, event):
-        """Реализация перемещения окна при движении мыши."""
         if self.offset is not None and event.buttons() == QtCore.Qt.LeftButton:
-            self.tennis.move(event.globalPos() - self.offset)  # Меняем положение главного окна
+            self.tennis.move(event.globalPos() - self.offset)
             event.accept()
 
     def game_press(self):
